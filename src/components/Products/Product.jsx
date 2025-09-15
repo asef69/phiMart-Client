@@ -24,7 +24,7 @@ const Product = () => {
       .finally(() => setIsLoading(false));
   }, []);
   return (
-    <section className="mx-auto py-16 bg-gray-50">
+    <section className="py-12 p-4 max-w-7xl mx-auto bg-gray-50">
       <div className="flex justify-between items-center px-4 md:px-8 mb-4">
         <h2 className="text-3xl md:text-4xl font-bold px-4 flex justify-center items-center text-black">
           Trending Products

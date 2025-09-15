@@ -30,22 +30,22 @@ const DiscountTimer = () => {
       <div>
         <span className="text-3xl text-pink-500">{timeLeft.days}</span>
         <br />
-        Days
+        <span className="text-black">Days</span>
       </div>
       <div>
         <span className="text-3xl text-pink-500">{timeLeft.hours}</span>
         <br />
-        Hrs
+        <span className="text-black">Hrs</span>
       </div>
       <div>
         <span className="text-3xl text-pink-500">{timeLeft.minutes}</span>
         <br />
-        Min
+        <span className="text-black">Min</span>
       </div>
       <div>
-        <span className="text-3xl text-pink-500">{timeLeft.seconds}</span>
+        <span className="text-3xl  text-pink-500">{timeLeft.seconds}</span>
         <br />
-        Sec
+        <span className="text-black">Sec</span>
       </div>
     </div>
   );
