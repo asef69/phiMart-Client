@@ -192,7 +192,7 @@ const Register = () => {
               )}
             </div>
 
-            <button type="submit" className="btn btn-primary w-full"></button>
+            <button type="submit" className="btn btn-primary w-full"> Submit</button>
           </form>
 
           <div className="text-center mt-4">
