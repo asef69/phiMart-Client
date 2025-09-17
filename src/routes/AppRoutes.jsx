@@ -3,9 +3,9 @@ import About from "../pages/About";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import Shop from "../pages/Shop";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Dashboard from "../pages/Dashboard";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+import Dashboard from "../Pages/Dashboard";
 import PrivateRoute from "../components/PrivateRoute";
 import ActivateAccount from "../components/Registration/ActivateAccount";
 
