@@ -1,15 +1,17 @@
 import { Route, Routes } from "react-router";
-import About from "../pages/About";
+import About from "../Pages/About";
 import MainLayout from "../layouts/MainLayout";
-import Home from "../pages/Home";
-import Shop from "../pages/Shop";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import Home from "../Pages/Home";
+import Shop from "../Pages/Shop";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
 import Dashboard from "../Pages/Dashboard";
 import PrivateRoute from "../components/PrivateRoute";
 import ActivateAccount from "../components/Registration/ActivateAccount";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Profile from "../Pages/Profile";
+import ProductDetail from "../Pages/ProductDetail";
+import Cart from "../Pages/Cart";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +25,7 @@ const AppRoutes = () => {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="activate/:uid/:token" element={<ActivateAccount />} />
+        <Route path="shop/:productId" element={<ProductDetail />} />
       </Route>
       {/* Private Routes  */}
       <Route
@@ -35,6 +38,7 @@ const AppRoutes = () => {
       >
         <Route index element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="cart" element={<Cart />} />
       </Route>
     </Routes>
   );
