@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 import useAuthContext from "../../hooks/useAuthContext";
 import OrderTable from "./OrderTable";
 import authApiClient from "../../services/auth-api-client";
@@ -6,6 +6,7 @@ import authApiClient from "../../services/auth-api-client";
 const OrderCard = ({ order, onCancel }) => {
   const { user } = useAuthContext();
   const [status, setStatus] = useState(order.status);
+  const [loading, setLoading] = useState(false);
 
   const handleStatusChange = async (event) => {
     const newStatus = event.target.value;
@@ -17,12 +18,28 @@ const OrderCard = ({ order, onCancel }) => {
       console.log(response);
       if (response.status === 200) {
         setStatus(newStatus);
-        alert(response.data.status);
+      }
+      else{
+        alert("Failed to update status");
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handlePayment= async()=>{
+    setLoading(true);
+    try {
+      const response = await authApiClient.post('/payment/initiate/',{amount:order.total_price, orderId: order.id,numItems:order.items?.length});
+      console.log(response);
+      if(response.data.GatewayPageURL){
+        setLoading(false);
+        window.location.href=response.data.GatewayPageURL;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-lg mb-8 overflow-hidden">
@@ -85,9 +102,9 @@ const OrderCard = ({ order, onCancel }) => {
             <span>${order.total_price.toFixed(2)}</span>
           </div>
         </div>
-        {!user.is_staff && order.status === "Not Paid" && (
-          <button className="mt-4 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors">
-            Pay Now
+        { order.status === "Not Paid" && (
+          <button className="mt-4 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors" onClick={handlePayment} disabled={loading}>
+            {loading ? "Processing..." : "Pay Now"}
           </button>
         )}
       </div>
